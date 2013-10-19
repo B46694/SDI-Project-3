@@ -17,7 +17,7 @@
 // JSON (JavaScripts Opject Notation) - data format using HavaScripts obects and arrays
 // Benifits - No versions or derivitaves 
 // simpler format
-// Faster fo most languages to parse
+// Faster for most languages to parse
 // Parses into language natives
 // adopted by most major services
 // FLAWS- no security models (in fact, it helps us break one)
