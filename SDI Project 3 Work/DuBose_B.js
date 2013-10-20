@@ -2,8 +2,8 @@
 
 
 var milesPerDay = 30;
-var gasBudget = 30;
 var withinBudget = true;
+var gasBudget = 30;
 var gasPrice = 3.50; 
 // JSON Data, data for each vehicle
 var json = {
@@ -60,6 +60,47 @@ var costPerVehicle = function (milesPerDay) {
 					(milesPerDay / json.whatvehicle[2].MPG) * gasPrice) + " dollars per day!");	
 
 };
+// My while loop to tell me how much i will spend in gas this week
+var weekExpense = function(gasBudget) {
+	var Monday = 1.5;
+	var Tuesday = 1.5;
+	var Wednesday = 9.5;
+	var Thursday = 1.5;
+	var Friday = 3.75;
+	var Saturday = 20;
+	var total = 0;
+	
+	while (total <= gasBudget) {
+		if (total === 0) {
+			total = Monday;	
+		}
+		else if (total <= 1.5) {
+				total = total + Tuesday;		
+				}			
+		else if (total <= 3) {
+				total = total + Wednesday;
+				}	
+		else if (total <= 12.5) {
+				total = total + Thursday;			
+				}	
+		else if (total <= 14) {
+				total = total + Friday;			
+				}
+		else if (total <= 17.75) {
+				total = total + Saturday;			
+				}			
+	};
+						
+	if (total >  gasBudget) {
+		total = total - Saturday;			
+		}	
+					
+	console.log("The total for the week is " + total + " dollars!");
+	
+	if (total <= gasBudget) {
+		return(true)
+		}		
+};
 	
 console.log("Depending on the weather forcast for the week I will drive a specific vehicle in the hopes of staying under my " 
 				+ gasBudget + " dollar gas budget!");				
@@ -67,16 +108,32 @@ console.log("The data for each vehicle is listed here:");
 
 jsonData(json);	
 
-console.log("I was watching the weather report on sunday is as follows");							
-console.log("The five day forcast for the week is:");
+console.log("I was watching the weather report on sunday, the forcast for the week is as follows:");							
 
 // For loop for predicting the weather forcast for the week
 for (var i=0, j=dayOfWeek.length; i < j; i++) {
-	console.log( "The forcast for " + dayOfWeek[i] + " is " + weatherForcast[i] );	
+	console.log( "On " + dayOfWeek[i] + " it will be " + weatherForcast[i] );	
 };
+
+console.log("To help calculate my weekly gas expense I have calculated the cost per vehicle per day as follows:");
 
 // code to call the total cost per day per vehicle function
 costToDrive = costPerVehicle(milesPerDay)
+
+// code to call the while loop for total gas cost for the week
+
+GasThisWeek = weekExpense(gasBudget);
+
+
+if (weekExpense(true)) {		
+	console.log("test");
+}
+else {
+	console.log("testferwfewfwe");		
+}
+
+	
+		
 
 
 
