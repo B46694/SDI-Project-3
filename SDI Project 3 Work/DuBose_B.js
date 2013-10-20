@@ -50,8 +50,9 @@ var weatherForcast = [
 ];
 // This is the function to calculate cost per vehicle per day
 var costPerVehicle = function (milesPerDay) {
-		
-	console.log("To drive the " + json.whatvehicle[0].vehicle + " to work, it costs " + (
+	
+	console.log("I drive a total of " + milesPerDay + " per day, to get to and from work.");	
+	console.log("So, to drive the " + json.whatvehicle[0].vehicle + " to work, it costs " + (
 					(milesPerDay / json.whatvehicle[0].MPG) * gasPrice) + " dollars per day!");	
 	console.log("To drive the " + json.whatvehicle[1].vehicle + " to work, it costs " + (
 					(milesPerDay / json.whatvehicle[1].MPG) * gasPrice) + " dollars per day!");	
@@ -62,7 +63,7 @@ var costPerVehicle = function (milesPerDay) {
 // This is my for loop variable for showing the weather forcast for the week
 var weatherLoop = function (dayOfWeek, weatherForcast) {
 	for (var i=0, j=dayOfWeek.length; i < j; i++) {
-		console.log( "On " + dayOfWeek[i] + " it will be " + weatherForcast[i] );	
+		console.log( "On " + dayOfWeek[i] + " it will be " + weatherForcast[i] + "." );	
 	}
 };
 // My while loop to tell me how much i will spend in gas this week
@@ -99,8 +100,8 @@ var weekExpense = function(gasBudget) {
 	if (total >  gasBudget) {
 		total = total - Saturday;			
 		}	
-					
-	console.log("The total for the week is " + total + " dollars!");
+				
+	console.log("So, based on the 5 day forcast my gas cost will be " + total + " dollars for the week!");
 	
 	if (total <= gasBudget) {
 		return(true)
@@ -122,12 +123,11 @@ var getValue = function (GasThisWeek) {
 		}	
 };
 
-	
-console.log("Depending on the weather forcast for the week I will drive a specific vehicle in the hopes of staying under my " 
+console.log("Depending on the weather forcast for the week, I will drive a specific vehicle in the hopes of staying under my " 
 				+ gasBudget + " dollar gas budget!");				
 console.log("The data for each vehicle is listed here:");
 
-// This is to display my JSON data
+// This is to display my JSON data for what vehicle is suitable for what weather and MPG
 jsonData(json);	
 
 console.log("I was watching the weather report on sunday, the forcast for the week is as follows:");							
@@ -145,7 +145,4 @@ GasThisWeek = weekExpense(gasBudget);
 // code to display my boolean value of if it is true or false that i met my budget
 newFunction = getValue(GasThisWeek);
 
-console.log("Lets hope the weather stay sunny next week...");
-
-
-
+console.log("Lets hope the weather stays sunny for next week...");
