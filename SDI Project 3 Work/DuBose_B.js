@@ -2,7 +2,6 @@
 
 
 var milesPerDay = 30;
-var withinBudget = true;
 var gasBudget = 30;
 var gasPrice = 3.50; 
 // JSON Data, data for each vehicle
@@ -60,6 +59,12 @@ var costPerVehicle = function (milesPerDay) {
 					(milesPerDay / json.whatvehicle[2].MPG) * gasPrice) + " dollars per day!");	
 
 };
+// This is my for loop variable for showing the weather forcast for the week
+var weatherLoop = function (dayOfWeek, weatherForcast) {
+	for (var i=0, j=dayOfWeek.length; i < j; i++) {
+		console.log( "On " + dayOfWeek[i] + " it will be " + weatherForcast[i] );	
+	}
+};
 // My while loop to tell me how much i will spend in gas this week
 var weekExpense = function(gasBudget) {
 	var Monday = 1.5;
@@ -99,21 +104,35 @@ var weekExpense = function(gasBudget) {
 	
 	if (total <= gasBudget) {
 		return(true)
-		}		
+		}	
+		// this else if is redundant since it will never return false, but i added it just for continuity
+	else if (total > gasBudget) {
+		return(false)			
+		}			
 };
+//this is my function to display my boolean value, if i can afford my gas thi
+var getValue = function (GasThisWeek) {
+	
+	if (GasThisWeek==true) {
+			console.log("Yay! I'm within budget, I can go out to lunch one day this week!");
+		}
+// I do not need the if false, cuz it will never return false, but just in case i want to play with the code later i am leaving the if false options
+	else if (GasThisWeek==false) {
+			console.log("I went over budget... Looks like I am riding in the rain...");		
+		}	
+};
+
 	
 console.log("Depending on the weather forcast for the week I will drive a specific vehicle in the hopes of staying under my " 
 				+ gasBudget + " dollar gas budget!");				
 console.log("The data for each vehicle is listed here:");
 
+// This is to display my JSON data
 jsonData(json);	
 
 console.log("I was watching the weather report on sunday, the forcast for the week is as follows:");							
 
-// For loop for predicting the weather forcast for the week
-for (var i=0, j=dayOfWeek.length; i < j; i++) {
-	console.log( "On " + dayOfWeek[i] + " it will be " + weatherForcast[i] );	
-};
+forcastCall = weatherLoop(dayOfWeek, weatherForcast)
 
 console.log("To help calculate my weekly gas expense I have calculated the cost per vehicle per day as follows:");
 
@@ -121,19 +140,12 @@ console.log("To help calculate my weekly gas expense I have calculated the cost 
 costToDrive = costPerVehicle(milesPerDay)
 
 // code to call the while loop for total gas cost for the week
-
 GasThisWeek = weekExpense(gasBudget);
 
+// code to display my boolean value of if it is true or false that i met my budget
+newFunction = getValue(GasThisWeek);
 
-if (weekExpense(true)) {		
-	console.log("test");
-}
-else {
-	console.log("testferwfewfwe");		
-}
-
-	
-		
+console.log("Lets hope the weather stay sunny next week...");
 
 
 
