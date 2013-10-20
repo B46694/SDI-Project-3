@@ -1,4 +1,6 @@
 //alert("JavaScript works!");
+// Brannon DuBose
+// Project 3 Final Work
 
 
 var milesPerDay = 30;
